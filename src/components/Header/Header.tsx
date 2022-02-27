@@ -35,7 +35,7 @@ export const Header = ({
   const matches = useMediaQuery(theme.breakpoints.up('md'));
 
   return (
-    <AppBar position="static" color="secondary">
+    <AppBar position="static" color="primary">
       <Container>
         <Toolbar disableGutters={true}>
           <HeaderSwipeableDrawerContainer
@@ -56,7 +56,7 @@ export const Header = ({
               underline="none"
               onClick={handleLogoClick}
             >
-              Napoleon
+              Funny Cakes
             </Link>
           </Box>
           <Button

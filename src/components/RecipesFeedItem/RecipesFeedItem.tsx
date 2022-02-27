@@ -6,7 +6,6 @@ import {
   Grid,
   Typography,
 } from '@mui/material';
-import React from 'react';
 import { Recipe } from '../../types/recipeType';
 
 interface RecipeFeedItemProps {
@@ -27,7 +26,7 @@ export const RecipeFeedItem = ({
         onClick={handleCardClick}
         sx={
           selected
-            ? { boxShadow: '0 0 15px #e87c7c' }
+            ? { boxShadow: '0 0 15px #9575cd' }
             : { boxShadow: '0 0 15px rgba(0, 0, 0, .3)' }
         }
       >
