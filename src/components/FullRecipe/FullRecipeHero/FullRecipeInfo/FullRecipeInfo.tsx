@@ -33,7 +33,7 @@ export const FullRecipeInfo = ({ recipe }: FullRecipeInfoProps) => {
         maxWidth: { xs: '650px' },
         zIndex: 10,
         borderRadius: 3,
-        bgcolor: 'white.main',
+        bgcolor: '#fff',
         boxShadow: 10,
       }}
     >

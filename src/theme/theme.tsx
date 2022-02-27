@@ -1,15 +1,6 @@
-import { createTheme, responsiveFontSizes } from '@mui/material';
+import { createTheme, responsiveFontSizes, ThemeOptions } from '@mui/material';
 
-declare module '@mui/material/styles' {
-  interface Palette {
-    white: Palette['primary'];
-  }
-  interface PaletteOptions {
-    white: PaletteOptions['primary'];
-  }
-}
-
-let theme = createTheme({
+const themeOptions: ThemeOptions = {
   breakpoints: {
     values: {
       xs: 0,
@@ -21,16 +12,20 @@ let theme = createTheme({
   },
 
   palette: {
-    white: {
-      main: '#fff',
-      contrastText: '#000',
-    },
     primary: {
-      main: '#e87c7c',
+      main: '#9575cd',
     },
     secondary: {
-      main: '#f9eeaa',
+      main: '#616161',
     },
+    background: {
+      default: '#ffffff',
+      paper: '#ffffff',
+    },
+  },
+
+  typography: {
+    fontFamily: 'Ubuntu',
   },
 
   components: {
@@ -43,8 +38,9 @@ let theme = createTheme({
       },
     },
   },
-});
+}
 
+let theme = createTheme(themeOptions);
 theme = responsiveFontSizes(theme, {
   factor: 3,
   breakpoints: ['sm'],
