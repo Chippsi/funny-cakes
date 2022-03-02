@@ -14,12 +14,12 @@ export interface RecipeInstruction {
 export interface Recipe {
   id: string;
   type: string;
+  unitValue: number;
   title: string;
   description: string;
   owner: user;
   date: number;
   duration: number;
-  diameter: number;
   imgUrl: string;
   tags: string[];
   ingredients: RecipeIngredient[];
