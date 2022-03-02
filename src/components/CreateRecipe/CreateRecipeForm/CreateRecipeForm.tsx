@@ -161,7 +161,7 @@ export const CreateRecipeForm = ({
                 required
                 fullWidth
                 disabled={!isEditForm}
-                value={form.diameter === 0 ? '' : form.diameter}
+                value={form.unitValue === 0 ? '' : form.unitValue}
                 name="diameter"
                 type="number"
                 label="Объем"
@@ -189,7 +189,7 @@ export const CreateRecipeForm = ({
                 name="diameter"
                 type="number"
                 label="Диаметр"
-                value={form.diameter === 0 ? '' : form.diameter}
+                value={form.unitValue === 0 ? '' : form.unitValue}
                 onChange={handleChange}
                 InputProps={{
                   endAdornment: (

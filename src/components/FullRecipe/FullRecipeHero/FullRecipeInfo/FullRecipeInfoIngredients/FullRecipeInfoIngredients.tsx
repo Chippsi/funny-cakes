@@ -16,8 +16,8 @@ import { recipeTypeToUnit } from '../../../../../utils/functions';
 import { FullRecipePrint } from '../../../FullRecipePrint';
 
 interface FullRecipeInfoIngredientsProps {
-  customIngredients?: RecipeIngredient[];
-  diameter: number | number[];
+  ingredients?: RecipeIngredient[];
+  calcUnitValue: number;
   handleInputChange: ChangeEventHandler;
   handleInputBlur: FocusEventHandler;
   handleSliderChange: (
@@ -28,22 +28,23 @@ interface FullRecipeInfoIngredientsProps {
 }
 
 export const FullRecipeInfoIngredients = ({
-  diameter,
-  customIngredients,
+  ingredients,
+  calcUnitValue,
   handleInputChange,
   handleInputBlur,
   handleSliderChange,
   recipe,
 }: FullRecipeInfoIngredientsProps) => {
-  const diametrPrint = typeof diameter === 'number' ? diameter : diameter[0]; //Какой-то костыль для ТС
-  return customIngredients ? (
+  const recipeType = recipeTypeToUnit(recipe.type)
+
+  return ingredients ? (
     <Stack alignItems={'center'}>
       <TextField
-        value={diameter}
+        value={calcUnitValue}
         onChange={handleInputChange}
         onBlur={handleInputBlur}
         label={
-          recipeTypeToUnit(recipe.type) === 'volume'
+          recipeType === 'volume'
             ? 'Объем мл.'
             : 'Диаметр коржа см.'
         }
@@ -58,18 +59,18 @@ export const FullRecipeInfoIngredients = ({
         }}
       />
       <Slider
-        value={diameter}
+        value={calcUnitValue}
         onChange={handleSliderChange}
-        min={recipeTypeToUnit(recipe.type) === 'volume' ? 100 : 5}
-        max={recipeTypeToUnit(recipe.type) === 'volume' ? 5000 : 50}
+        min={recipeType === 'volume' ? 100 : 5}
+        max={recipeType === 'volume' ? 5000 : 50}
         sx={{ maxWidth: 400 }}
       />
       <List sx={{ width: '100%' }}>
-        {customIngredients.map((data, index) => (
+        {ingredients.map((ingredient, index) => (
           <ListItem key={index} divider sx={{ px: 0 }}>
-            <ListItemText primary={data.name} />
+            <ListItemText primary={ingredient.name} />
             <ListItemText
-              primary={data.count + ' ' + unitList[data.unit]}
+              primary={ingredient.count + ' ' + unitList[ingredient.unit]}
               sx={{
                 textAlign: 'end',
                 pl: { xs: 2, sm: 3 },
@@ -83,8 +84,8 @@ export const FullRecipeInfoIngredients = ({
       <FullRecipePrint
         recipe={{
           ...recipe,
-          ingredients: customIngredients,
-          diameter: diametrPrint,
+          ingredients,
+          unitValue: calcUnitValue
         }}
       />
     </Stack>

@@ -11,6 +11,7 @@ interface FullRecipePrintProps {
 
 export const FullRecipePrint = ({ recipe }: FullRecipePrintProps) => {
   const componentRef = useRef(null);
+  
   return (
     <>
       <ReactToPrint

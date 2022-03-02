@@ -25,11 +25,11 @@ export const CreateRecipeFormContainer = ({
     id: '',
     title: '',
     type: 'full recipe',
+    unitValue: 0,
     description: '',
     owner: owner,
     date: Date.now(),
     duration: 0,
-    diameter: 0,
     imgUrl: '',
     tags: [],
     ingredients: [],
@@ -75,7 +75,6 @@ export const CreateRecipeFormContainer = ({
         })
         .catch((e) => {
           setError('Что-то пошло не так... Попробуйте позже.');
-          console.log(e);
         });
     },
     [
